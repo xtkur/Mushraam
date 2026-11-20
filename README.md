@@ -2,35 +2,21 @@
 
 **P2P LAN chat over UDP broadcast. No server, no dependencies, single file.**
 
-```
-┌─────────────────────────────────────┐
-│  Mushraam  │  Aurelius  │  Онлайн: 3  │
-├─────────────────────────────────────┤
-│  Aurelius  Marcus  Gaius            │
-│  ─────────────────────────────────  │
-│  [14:32] * Marcus присоединился к чату
-│  [14:33] <Aurelius> привет всем
-│  [14:33] <Marcus> ←Aurelius> пнг
-│  [14:34] <Gaius> кого сюда звать?
-│  > _                                  │
-└─────────────────────────────────────┘
-```
-
 ## Features
 
-- **Zero config** — запустил, ввёл имя, в чате
-- **P2P over UDP broadcast** — работает в локальной сети без сервера
-- **Single file** — `Mushraam.py` (~1100 строк)
-- **Terminal UI** — цвета, история ввода, прокрутка, inline-меню
+- **Zero config** — run, enter name, start chatting
+- **P2P over UDP broadcast** — works on local network without a server
+- **Single file** — `Mushraam.py` (~1100 lines)
+- **Terminal UI** — colors, input history, scrolling, inline menus
 - **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/language`, `/delconf`, `/exit`
-- **Private messages** — `/ms имя текст` (в открытом виде)
+- **Private messages** — `/ms name text` (plaintext)
 - **Cross-platform** — Linux, macOS, Windows
-- **Persisted config** — `mushraam.config` (имя, язык, порт)
+- **Persisted config** — `mushraam.config` (name, language, port)
 
 ## Requirements
 
 - Python 3.10+
-- Interactive TTY (не работает в CI/sandbox)
+- Interactive TTY (won't work in CI/sandbox)
 
 ## Install & Run
 
@@ -40,45 +26,45 @@ cd Mushraam
 python3 Mushraam.py
 ```
 
-Первый запуск — интерактивная настройка (язык, имя, порт, сохранить конфиг).
+First run — interactive setup (language, name, port, save config).
 
 ## Commands
 
-| Команда | Описание |
-|---------|----------|
-| `/help` | Справка |
-| `/clear` | Очистить экран |
-| `/enick <имя>` | Сменить ник |
-| `/ms <имя> <текст>` | Личное сообщение |
-| `/language <ru/en>` | Сменить язык |
-| `/delconf` | Удалить конфиг |
-| `/exit` | Выйти |
+| Command | Description |
+|---------|-------------|
+| `/help` | Show help |
+| `/clear` | Clear chat screen |
+| `/enick <name>` | Change nickname |
+| `/ms <name> <text>` | Private message |
+| `/language <ru/en>` | Change language |
+| `/delconf` | Delete config |
+| `/exit` | Exit chat |
 
 ## How it works
 
-- UDP broadcast на порт **50000** (настраивается)
-- Heartbeat каждые 3 сек — держит список онлайн
-- Таймаут 10 сек — помечает оффлайн
-- JSON-сообщения: `join`, `ping`, `msg`, `pm`, `rename`, `bye`
-- Без шифрования, без авторизации — доверенная LAN только
+- UDP broadcast on port **50000** (configurable)
+- Heartbeat every 3 sec — maintains online user list
+- 10 sec timeout — marks users offline
+- JSON messages: `join`, `ping`, `msg`, `pm`, `rename`, `bye`
+- No encryption, no auth — trusted LAN only
 
 ## Config
 
-Создаётся автоматически: `mushraam.config`
+Created automatically: `mushraam.config`
 
 ```json
 {
-  "lang": "ru",
+  "lang": "en",
   "name": "Aurelius",
   "port": 50000
 }
 ```
 
-Удалить: `/delconf` или удалить файл.
+Delete: `/delconf` or remove the file.
 
 ## License
 
-MIT — см. [LICENSE](LICENSE)
+MIT — see [LICENSE](LICENSE)
 
 ## Author
 
