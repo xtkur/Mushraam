@@ -17,6 +17,7 @@ Single-file terminal app: peer-to-peer LAN chat over UDP broadcast. No server, n
 - No tests/lint/typecheck commands exist; don't invent them.
 - Interactive TTY required; cannot run in CI/sandbox meaningfully.
 - Broadcasts UDP on port 50000 to whole segment; no encryption or auth.
+- English only: Russian language removed. Single flat `L` dict, no `LANG`, no `/language` command, no language prompt on first run.
 - Codename for this file: `md`.
 - Respond in Russian.
 - Update this file after a prompt if there's something important to record.

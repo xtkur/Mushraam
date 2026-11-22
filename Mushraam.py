@@ -66,91 +66,43 @@ PORT = 50000
 BROADCAST_IP = '<broadcast>'
 HEARTBEAT_INTERVAL = 3
 TIMEOUT = 10
-LANG = 'ru'
-
 L = {
- 'ru': {
-   'terminal_small': 'Терминал слишком мал',
-   'online': 'Онлайн',
-   'no_users': 'Нет активных пользователей',
-   'help_title': 'Доступные команды:',
-   'help_this': 'эта справка',
-   'help_clear': '/clear — очистить экран чата',
-   'help_delconf': '/delconf — удалить конфиг',
-   'help_language': '/language <ru/en> — сменить язык',
-   'help_enick': '/enick <имя> — сменить ник',
-   'help_ms': '/ms <имя> <текст> — личное сообщение (в открытом виде)',
-   'help_exit': '/exit — выйти из чата',
-   'usage_language': 'Использование: /language <ru/en>',
-   'usage_enick': 'Использование: /enick <новое имя>',
-   'same_lang': 'Такой язык уже установлен',
-   'name_no_spaces': 'Имя не должно содержать пробелов',
-   'now_known': 'теперь известен как «{new}»',
-   'you_are_now': 'Вы теперь «{new}»',
-   'usage_ms': 'Использование: /ms <имя> <текст>',
-   'empty_msg': 'Пустое сообщение',
-   'unknown_cmd': 'Неизвестная команда: {cmd} (см. /help)',
-   'left_chat': 'вышел из чата',
-   'timeout': 'отключился (таймаут)',
-   'tty_required': 'Требуется интерактивный терминал (TTY).',
-   'your_name': 'Ваше имя: ',
-   'port_prompt': 'Порт (по умолч. 50000): ',
-   'bad_port': 'Неверный порт.',
-   'exit': 'Выход.',
-   'save_config': 'Сохранить конфиг? (y/n): ',
-   'choose_lang': 'Choose language (ru/en): ',
-   'joined': 'присоединился к чату',
-   'config_deleted': 'Конфиг удалён',
-   'config_error': 'Ошибка',
-   'config_not_exists': 'Конфиг не существует',
-   'language_set': 'Язык установлен',
-   'user_offline': 'Пользователь не в сети',
-   'cant_msg_self': 'Нельзя отправить сообщение самому себе',
-   'config_already_deleted': 'Конфиг уже удалён',
- },
- 'en': {
-   'terminal_small': 'Terminal too small',
-   'online': 'Online',
-   'no_users': 'No active users',
-   'help_title': 'Available commands:',
-   'help_this': 'this help',
-   'help_clear': '/clear — clear chat screen',
-   'help_delconf': '/delconf — delete config',
-   'help_language': '/language <ru/en> — change language',
-   'help_enick': '/enick <name> — change nickname',
-   'help_ms': '/ms <name> <text> — private message (plaintext)',
-   'help_exit': '/exit — exit chat',
-   'usage_language': 'Usage: /language <ru/en>',
-   'usage_enick': 'Usage: /enick <new name>',
-   'same_lang': 'This language is already set',
-   'name_no_spaces': 'Name must not contain spaces',
-   'now_known': 'now known as «{new}»',
-   'you_are_now': 'You are now «{new}»',
-   'usage_ms': 'Usage: /ms <name> <text>',
-   'empty_msg': 'Empty message',
-   'unknown_cmd': 'Unknown command: {cmd} (see /help)',
-   'left_chat': 'left the chat',
-   'timeout': 'disconnected (timeout)',
-   'tty_required': 'Interactive terminal (TTY) required.',
-   'your_name': 'Your name: ',
-   'port_prompt': 'Port (default 50000): ',
-   'bad_port': 'Invalid port.',
-   'exit': 'Exit.',
-   'save_config': 'Save config? (y/n): ',
-   'choose_lang': 'Choose language (ru/en): ',
-   'joined': 'joined the chat',
-   'config_deleted': 'Config deleted',
-   'config_error': 'Error',
-   'config_not_exists': 'Config does not exist',
-   'language_set': 'Language set',
-   'user_offline': 'User not online',
-   'cant_msg_self': 'Cannot send message to yourself',
-   'config_already_deleted': 'Config already deleted',
- }
+    'terminal_small': 'Terminal too small',
+    'online': 'Online',
+    'no_users': 'No active users',
+    'help_title': 'Available commands:',
+    'help_this': 'this help',
+    'help_clear': '/clear — clear chat screen',
+    'help_delconf': '/delconf — delete config',
+    'help_enick': '/enick <name> — change nickname',
+    'help_ms': '/ms <name> <text> — private message (plaintext)',
+    'help_exit': '/exit — exit chat',
+    'usage_enick': 'Usage: /enick <new name>',
+    'name_no_spaces': 'Name must not contain spaces',
+    'now_known': 'now known as «{new}»',
+    'you_are_now': 'You are now «{new}»',
+    'usage_ms': 'Usage: /ms <name> <text>',
+    'empty_msg': 'Empty message',
+    'unknown_cmd': 'Unknown command: {cmd} (see /help)',
+    'left_chat': 'left the chat',
+    'timeout': 'disconnected (timeout)',
+    'tty_required': 'Interactive terminal (TTY) required.',
+    'your_name': 'Your name: ',
+    'port_prompt': 'Port (default 50000): ',
+    'bad_port': 'Invalid port.',
+    'exit': 'Exit.',
+    'save_config': 'Save config? (y/n): ',
+    'joined': 'joined the chat',
+    'config_deleted': 'Config deleted',
+    'config_error': 'Error',
+    'config_not_exists': 'Config does not exist',
+    'user_offline': 'User not online',
+    'cant_msg_self': 'Cannot send message to yourself',
+    'config_already_deleted': 'Config already deleted',
 }
 
 def t(key, **kw):
-    s = L.get(LANG, L['ru']).get(key, key)
+    s = L.get(key, key)
     return s.format(**kw) if kw else s
 
 
@@ -421,7 +373,7 @@ def prune_offline():
 # ------------------- rendering -------------------
 
 def _clip(text, w):
-    """Грубая обрезка по длине (ANSI коды не учитываются)."""
+    """Rough truncation by length (ANSI codes not accounted for)."""
     return text if len(text) <= w else text[:w]
 
 
@@ -430,31 +382,30 @@ def build_lines(w, h):
         users = sorted(state.users.keys())
         lines = []
 
-        # Шапка
+        # Header
         title = f" Mushraam  │  {state.my_name}  │  {t('online')}: {len(users)} "
         lines.append(C.REV + C.BOLD + title[:w].ljust(w) + C.RESET)
 
-        # Список пользователей
+        # User list
         if users:
             parts = [f"{color_for(u)}{u}{C.RESET}" for u in users]
             lines.append(_clip("  " + "  ".join(parts), w))
         else:
             lines.append(f"  {C.DIM}{t('no_users')}{C.RESET}")
 
-        # Разделитель
+        # Separator
         lines.append(C.DIM + '─' * w + C.RESET)
 
-        # Лог
+        # Log
         body_h = max(1, h - 4)
         for ts, kind, name, text, to in state.messages[-body_h:]:
             if kind == 'sys':
                 if name:
-                    # имя + пробел + текст с маленькой буквы не нужно принудительно, но текст уже задан
                     line = f"{C.DIM}[{ts}] * {name} {text}{C.RESET}"
                 else:
                     line = f"{C.DIM}[{ts}] * {text}{C.RESET}"
             elif kind == 'pm':
-                line = f"{C.DIM}[{ts}]{C.RESET} {C.RED}{C.BOLD}[личное от {name}]{C.RESET} {text}"
+                line = f"{C.DIM}[{ts}]{C.RESET} {C.RED}{C.BOLD}[private from {name}]{C.RESET} {text}"
             else:
                 col = color_for(name)
                 if to:
@@ -514,7 +465,6 @@ def help_lines():
         '/help — ' + t('help_this'),
         t('help_clear'),
         t('help_delconf'),
-        t('help_language'),
         t('help_enick'),
         t('help_ms'),
         t('help_exit'),
@@ -529,7 +479,6 @@ def _sys(msg):
 
 
 def handle_command(sock, line):
-    global LANG
     if not line.startswith('/'):
         return False
 
@@ -564,22 +513,6 @@ def handle_command(sock, line):
                 _sys(t('config_not_exists'))
         except Exception:
             _sys(t('config_error'))
-        return True
-
-    if cmd == '/language':
-        if len(parts) < 2 or parts[1].strip().lower() not in ('ru','en'):
-            _sys(t('usage_language'))
-            return True
-        newlang = parts[1].strip().lower()
-        if newlang == LANG:
-            _sys(t('same_lang'))
-            return True
-        LANG = newlang
-        cfg = load_config()
-        if cfg:
-            cfg['lang'] = LANG
-            save_config(cfg)
-        _sys(t('language_set'))
         return True
 
     if cmd == '/enick':
@@ -701,7 +634,7 @@ def process_key(key, sock):
                 state.dirty = True
         return True
 
-    # arrows up/down - история ввода
+    # arrows up/down - input history
     if key in ('\x1b[A', '\x1bOA', 'UP'):
         with state.lock:
             if not state.input_history:
@@ -958,28 +891,16 @@ select_option = select_option_inline
 
 
 def main():
-    global LANG, PORT
+    global PORT
     if not (sys.stdin.isatty() and sys.stdout.isatty()):
         print(t('tty_required'))
         return
 
     cfg = load_config()
     if cfg:
-        LANG = cfg.get('lang', 'ru')
         name = cfg.get('name', '') or random_name()
         PORT = cfg.get('port', 50000)
     else:
-        try:
-            lang_choice = select_option(t('choose_lang'), ['RU', 'EN'], 0 if LANG == 'ru' else 1)
-            if lang_choice is None:
-                lang_choice = 'RU'
-            LANG = 'ru' if str(lang_choice).strip().upper().startswith('R') else 'en'
-            sys.stdout.write('\r\033[K')
-            sys.stdout.flush()
-        except (EOFError, KeyboardInterrupt):
-            print()
-            return
-
         try:
             sys.stdout.write(t('your_name'))
             sys.stdout.flush()
@@ -1017,20 +938,17 @@ def main():
             return
 
         try:
-            save_choice = select_option(t('save_config'), ['Да', 'Нет'] if LANG == 'ru' else ['Yes', 'No'], 0)
-            if LANG == 'ru':
-                saveq = 'y' if save_choice == 'Да' else 'n'
+            save_choice = select_option(t('save_config'), ['Yes', 'No'], 0)
+            if save_choice is None:
+                saveq = 'n'
             else:
-                if save_choice is None:
-                    saveq = 'n'
-                else:
-                    saveq = 'y' if str(save_choice).strip().lower().startswith('y') else 'n'
+                saveq = 'y' if str(save_choice).strip().lower().startswith('y') else 'n'
             sys.stdout.write('\r\033[K')
             sys.stdout.flush()
         except (EOFError, KeyboardInterrupt):
             saveq = ''
-        if saveq in ("y", "yes", "да"):
-            save_config({"lang": LANG, "name": name, "port": PORT})
+        if saveq in ("y", "yes"):
+            save_config({"name": name, "port": PORT})
 
     state.my_name = name
 
@@ -1058,10 +976,7 @@ def main():
         try:
             ts = datetime.now().strftime('%H:%M:%S')
             with state.lock:
-                if LANG == 'ru':
-                    state.messages.append((ts, 'sys', name, 'присоединился к чату', None))
-                else:
-                    state.messages.append((ts, 'sys', name, 'joined the chat', None))
+                state.messages.append((ts, 'sys', name, t('joined'), None))
                 state.dirty = True
         except Exception:
             pass
