@@ -8,7 +8,7 @@
 - **P2P over UDP broadcast** — works on local network without a server
 - **Single file** — `Mushraam.py` (~1100 lines)
 - **Terminal UI** — colors, input history, scrolling, inline menus
-- **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/language`, `/delconf`, `/exit`
+- **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/delconf`, `/exit`
 - **Private messages** — `/ms name text` (plaintext)
 - **Cross-platform** — Linux, macOS, Windows
 - **Persisted config** — `mushraam.config` (name, language, port)
@@ -26,7 +26,7 @@ cd Mushraam
 python3 Mushraam.py
 ```
 
-First run — interactive setup (language, name, port, save config).
+First run — interactive setup (name, port, save config).
 
 ## Commands
 
@@ -36,7 +36,6 @@ First run — interactive setup (language, name, port, save config).
 | `/clear` | Clear chat screen |
 | `/enick <name>` | Change nickname |
 | `/ms <name> <text>` | Private message |
-| `/language <ru/en>` | Change language |
 | `/delconf` | Delete config |
 | `/exit` | Exit chat |
 
@@ -54,7 +53,6 @@ Created automatically: `mushraam.config`
 
 ```json
 {
-  "lang": "en",
   "name": "Aurelius",
   "port": 50000
 }
