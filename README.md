@@ -67,3 +67,5 @@ MIT — see [LICENSE](LICENSE)
 ## Author
 
 xtkur — 2026
+
+ ###Created with the help of AI
