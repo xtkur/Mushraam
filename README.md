@@ -11,7 +11,7 @@
 - **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/delconf`, `/exit`
 - **Private messages** — `/ms name text` (plaintext)
 - **Cross-platform** — Linux, macOS, Windows
-- **Persisted config** — `mushraam.config` (name, language, port)
+- **Persisted config** — `mushraam.config` (name, port)
 
 ## Requirements
 
