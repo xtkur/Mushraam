@@ -68,4 +68,4 @@ MIT — see [LICENSE](LICENSE)
 
 xtkur — 2026
 
- ###Created with the help of AI
+###### Created with the help of AI
