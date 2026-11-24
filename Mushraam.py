@@ -87,7 +87,7 @@ L = {
     'left_chat': 'left the chat',
     'timeout': 'disconnected (timeout)',
     'tty_required': 'Interactive terminal (TTY) required.',
-    'your_name': 'Your name: ',
+    'your_name': 'Your username: ',
     'port_prompt': 'Port (default 50000): ',
     'bad_port': 'Invalid port.',
     'exit': 'Exit.',
@@ -902,51 +902,63 @@ def main():
         PORT = cfg.get('port', 50000)
     else:
         try:
-            sys.stdout.write(t('your_name'))
+            sys.stdout.write(t('your_name') + '\n' + C.GREEN + '>>> ' + C.BLUE)
             sys.stdout.flush()
-            try:
-                name = input().rstrip()
-            except Exception:
-                name = sys.stdin.readline()
-                if name == '':
-                    raise EOFError
-                name = name.rstrip('\r\n')
+            name = sys.stdin.readline()
+            if name == '':
+                raise EOFError
+            name = name.rstrip('\r\n')
+            sys.stdout.write(C.RESET)
+            sys.stdout.flush()
             name = name.strip() or random_name()
         except (EOFError, KeyboardInterrupt):
             print()
             return
 
         try:
-            sys.stdout.write(t('port_prompt'))
+            sys.stdout.write(t('port_prompt') + '\n' + C.GREEN + '>>> ' + C.BLUE)
             sys.stdout.flush()
-            try:
-                port_input = input().rstrip()
-            except Exception:
+            while True:
                 port_input = sys.stdin.readline()
                 if port_input == '':
                     raise EOFError
                 port_input = port_input.rstrip('\r\n')
-            port_input = port_input.strip()
-            if port_input:
+                sys.stdout.write(C.RESET)
+                sys.stdout.flush()
+                port_input = port_input.strip()
+                if port_input == '':
+                    break
                 try:
                     PORT = int(port_input)
+                    break
                 except ValueError:
-                    print(t('bad_port'))
-                    return
+                    sys.stdout.write(C.GREEN + '>>> ' + C.BLUE)
+                    sys.stdout.flush()
         except (EOFError, KeyboardInterrupt):
             print()
             return
 
+        saveq = ''
         try:
-            save_choice = select_option(t('save_config'), ['Yes', 'No'], 0)
-            if save_choice is None:
-                saveq = 'n'
-            else:
-                saveq = 'y' if str(save_choice).strip().lower().startswith('y') else 'n'
-            sys.stdout.write('\r\033[K')
+            sys.stdout.write(t('save_config') + '\n' + C.GREEN + '>>> ' + C.BLUE)
             sys.stdout.flush()
+            while True:
+                saveq_raw = sys.stdin.readline()
+                if saveq_raw == '':
+                    raise EOFError
+                saveq_raw = saveq_raw.rstrip('\r\n')
+                sys.stdout.write(C.RESET)
+                sys.stdout.flush()
+                saveq = saveq_raw.strip().lower()
+                if saveq in ('y', 'yes', 'n', 'no', ''):
+                    break
+                sys.stdout.write(C.GREEN + '>>> ' + C.BLUE)
+                sys.stdout.flush()
         except (EOFError, KeyboardInterrupt):
             saveq = ''
+            print()
+        if saveq == '':
+            saveq = 'n'
         if saveq in ("y", "yes"):
             save_config({"name": name, "port": PORT})
 
