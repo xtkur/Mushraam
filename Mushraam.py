@@ -73,7 +73,7 @@ L = {
     'help_title': 'Available commands:',
     'help_this': 'this help',
     'help_clear': '/clear — clear chat screen',
-    'help_delconf': '/delconf — delete config',
+    'help_conf': '/conf <delete/create> — conf management',
     'help_enick': '/enick <name> — change nickname',
     'help_ms': '/ms <name> <text> — private message (plaintext)',
     'help_exit': '/exit — exit chat',
@@ -96,6 +96,7 @@ L = {
     'config_deleted': 'Config deleted',
     'config_error': 'Error',
     'config_not_exists': 'Config does not exist',
+    'config_created': 'Config created',
     'user_offline': 'User not online',
     'cant_msg_self': 'Cannot send message to yourself',
     'config_already_deleted': 'Config already deleted',
@@ -464,7 +465,7 @@ def help_lines():
     return [
         '/help — ' + t('help_this'),
         t('help_clear'),
-        t('help_delconf'),
+        t('help_conf'),
         t('help_enick'),
         t('help_ms'),
         t('help_exit'),
@@ -504,15 +505,26 @@ def handle_command(sock, line):
             state.dirty = True
         return True
 
-    if cmd == '/delconf':
-        try:
-            if os.path.exists(CONFIG_FILE):
-                os.remove(CONFIG_FILE)
-                _sys(t('config_deleted'))
-            else:
-                _sys(t('config_not_exists'))
-        except Exception:
-            _sys(t('config_error'))
+    if cmd == '/conf':
+        sub = parts[1].lower() if len(parts) > 1 else ''
+        if sub == 'delete':
+            try:
+                if os.path.exists(CONFIG_FILE):
+                    os.remove(CONFIG_FILE)
+                    _sys(t('config_deleted'))
+                else:
+                    _sys(t('config_not_exists'))
+            except Exception:
+                _sys(t('config_error'))
+            return True
+        if sub == 'create':
+            try:
+                save_config({'name': state.my_name, 'port': PORT})
+                _sys(t('config_created'))
+            except Exception:
+                _sys(t('config_error'))
+            return True
+        _sys('Usage: /conf delete | /conf create')
         return True
 
     if cmd == '/enick':

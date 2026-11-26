@@ -8,7 +8,7 @@
 - **P2P over UDP broadcast** — works on local network without a server
 - **Single file** — `Mushraam.py` (~1100 lines)
 - **Terminal UI** — colors, input history, scrolling, inline menus
-- **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/delconf`, `/exit`
+- **Commands** — `/help`, `/clear`, `/enick`, `/ms`, `/conf`, `/exit`
 - **Private messages** — `/ms name text` (plaintext)
 - **Cross-platform** — Linux, macOS, Windows
 - **Persisted config** — `mushraam.config` (name, port)
@@ -36,7 +36,7 @@ First run — interactive setup (name, port, save config).
 | `/clear` | Clear chat screen |
 | `/enick <name>` | Change nickname |
 | `/ms <name> <text>` | Private message |
-| `/delconf` | Delete config |
+| `/conf <delete/create>` | Conf management |
 | `/exit` | Exit chat |
 
 ## How it works
@@ -49,7 +49,7 @@ First run — interactive setup (name, port, save config).
 
 ## Config
 
-Created automatically: `mushraam.config`
+Created automatically: `mushraam.config` or use `/conf create`
 
 ```json
 {
@@ -58,7 +58,7 @@ Created automatically: `mushraam.config`
 }
 ```
 
-Delete: `/delconf` or remove the file.
+Delete: `/conf delete` or remove the file.
 
 ## License
 
